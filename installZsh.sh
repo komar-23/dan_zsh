@@ -31,3 +31,19 @@ else
   cp ${HOME}/${OMP_CONF_DIR}/ompvimode ${HOME}/${OMP_CONF_DIR}/ompvimode.bkp
   cp ./.config/omp/ompvimode ${HOME}/${OMP_CONF_DIR}/ompvimode
 fi
+
+if [ ! -f "${HOME}/.zshrc" ] ; then
+  cp ./.zshrc ${HOME}/.zshrc
+else
+  echo '.zshrc file exist, backup has been created as a .zshrc.bkp file'
+  cp ${HOME}/.zshrc ${HOME}/.zshrc.bkp
+  cp ./.zshrc ${HOME}/.zshrc
+fi
+
+if [ ! -f "${HOME}/.zshenv" ] ; then
+  cp ./.zshenv ${HOME}/.zshenv
+else
+  echo '.zshenv file exist, backup has been created as a .zshenv.bkp file'
+  cp ${HOME}/.zshenv ${HOME}/.zshenv.bkp
+  cp ./.zshenv ${HOME}/.zshenv
+fi
