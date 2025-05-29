@@ -25,7 +25,7 @@ else
 fi
 
 if [ ! -f "${HOME}/${OMP_CONF_DIR}/ompvimode" ] ; then
-  cp ./.config/omp/ompvimode ${HOME}/${OMP_CONF_DIR/ompvimode
+  cp ./.config/omp/ompvimode ${HOME}/${OMP_CONF_DIR}/ompvimode
 else
   echo 'ompvimode file exist, backup has been created as a ompvimode.bkp file'
   cp ${HOME}/${OMP_CONF_DIR}/ompvimode ${HOME}/${OMP_CONF_DIR}/ompvimode.bkp
