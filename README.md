@@ -13,6 +13,7 @@ Following programs must be installed:
 - zoxide
 - eza
 - bat
+- fd (fd-find)
 
 # Installation
 
