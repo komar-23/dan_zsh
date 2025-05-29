@@ -5,7 +5,14 @@ In addition contains shell script for easy setup in operation system.
 
 # Requirements
 
-To be defined (if any).
+Following programs must be installed:
+
+- zsh
+- fzf
+- tmux
+- zoxide
+- eza
+- bat
 
 # Installation
 

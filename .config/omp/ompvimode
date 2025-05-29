@@ -1,0 +1,51 @@
+# OMP zsh-vi-mode integration
+function zvm_config() {
+  ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
+  ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
+
+# The prompt cursor in normal mode
+ZVM_NORMAL_MODE_CURSOR=$ZVM_CURSOR_USER_DEFAULT
+
+# The prompt cursor in insert mode
+ZVM_INSERT_MODE_CURSOR=$ZVM_CURSOR_USER_DEFAULT
+
+# The prompt cursor in visual mode
+ZVM_VISUAL_MODE_CURSOR=$ZVM_CURSOR_USER_DEFAULT
+
+# The prompt cursor in visual line mode
+ZVM_VISUAL_LINE_MODE_CURSOR=$ZVM_CURSOR_USER_DEFAULT
+
+# The prompt cursor in operator pending mode
+ZVM_OPPEND_MODE_CURSOR=$ZVM_CURSOR_USER_DEFAULT
+}
+
+export POSH_VI_MODE="I"
+
+_omp_redraw-prompt() {
+  local precmd
+  for precmd in "${precmd_functions[@]}"; do
+    "$precmd"
+  done
+  zle && zle reset-prompt
+}
+
+function zvm_after_select_vi_mode() {
+  case $ZVM_MODE in
+  $ZVM_MODE_NORMAL)
+    POSH_VI_MODE="N"
+    ;;
+  $ZVM_MODE_INSERT)
+    POSH_VI_MODE="I"
+    ;;
+  $ZVM_MODE_VISUAL)
+    POSH_VI_MODE="V"
+    ;;
+  $ZVM_MODE_VISUAL_LINE)
+    POSH_VI_MODE="V-L"
+    ;;
+  $ZVM_MODE_REPLACE)
+    POSH_VI_MODE="R"
+    ;;
+  esac
+  _omp_redraw-prompt
+}
