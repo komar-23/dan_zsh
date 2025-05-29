@@ -47,3 +47,7 @@ else
   cp ${HOME}/.zshenv ${HOME}/.zshenv.bkp
   cp ./.zshenv ${HOME}/.zshenv
 fi
+
+if [ ! -f "${HOME}/.local/bin/oh-my-posh" ] ; then
+  curl -s https://ohmyposh.dev/install.sh | bash -s -- -d ~/.local/bin
+fi
