@@ -108,4 +108,4 @@ zinit light zsh-users/zsh-autosuggestions
 #FZF integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
-eval "$(oh-my-posh init zsh --config ~/.config/omp/dan.omp.json)"
+eval "$(oh-my-posh init zsh --config ~/.config/omp/dan_vim.omp.json)"

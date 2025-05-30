@@ -16,12 +16,20 @@ fi
 #   echo "${HOME}/${VIM_PACK_DIR}/vendor/start/cleverf exist."
 # fi
 
-if [ ! -f "${HOME}/${OMP_CONF_DIR}/dan.omp.json" ] ; then
-  cp ./.config/omp/dan.omp.json ${HOME}/${OMP_CONF_DIR}/dan.omp.json
+if [ ! -f "${HOME}/${OMP_CONF_DIR}/dan_vim.omp.json" ] ; then
+  cp ./.config/omp/dan_vim.omp.json ${HOME}/${OMP_CONF_DIR}/dan_vim.omp.json
 else
-  echo 'dan.omp.json file exist, backup has been created as a dan.omp.json.bkp file'
-  cp ${HOME}/${OMP_CONF_DIR}/dan.omp.json ${HOME}/${OMP_CONF_DIR}/dan.omp.json.bkp
-  cp ./.config/omp/dan.omp.json ${HOME}/${OMP_CONF_DIR}/dan.omp.json
+  echo 'dan_vim.omp.json file exist, backup has been created as a dan_vim.omp.json.bkp file'
+  cp ${HOME}/${OMP_CONF_DIR}/dan_vim.omp.json ${HOME}/${OMP_CONF_DIR}/dan_vim.omp.json.bkp
+  cp ./.config/omp/dan_vim.omp.json ${HOME}/${OMP_CONF_DIR}/dan_vim.omp.json
+fi
+
+if [ ! -f "${HOME}/${OMP_CONF_DIR}/dan_norm.omp.json" ] ; then
+  cp ./.config/omp/dan_norm.omp.json ${HOME}/${OMP_CONF_DIR}/dan_norm.omp.json
+else
+  echo 'dan_norm.omp.json file exist, backup has been created as a dan_norm.omp.json.bkp file'
+  cp ${HOME}/${OMP_CONF_DIR}/dan_norm.omp.json ${HOME}/${OMP_CONF_DIR}/dan_norm.omp.json.bkp
+  cp ./.config/omp/dan_norm.omp.json ${HOME}/${OMP_CONF_DIR}/dan_norm.omp.json
 fi
 
 if [ ! -f "${HOME}/${OMP_CONF_DIR}/ompvimode" ] ; then
