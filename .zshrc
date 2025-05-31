@@ -98,9 +98,6 @@ _fzf_compgen_dir() {
 
 if [ "$VIMMODESW" != "vim" ] ; then
   # Add fzf-git window for manage GIT (don't work because of CTRL-G conflict with vim-mode plugin)
-  # TODO
-  # script fzf-git.sh to be moved (different destination path)
-  # git clone to be added in installation script
   source "${HOME}/.local/share/fzf-git/fzf-git.sh"
 fi
 
