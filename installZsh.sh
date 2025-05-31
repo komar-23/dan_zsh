@@ -57,7 +57,8 @@ else
 fi
 
 if [ ! -f "${HOME}/.local/bin/oh-my-posh" ] ; then
-  curl -s https://ohmyposh.dev/install.sh | bash -s -- -d ~/.local/bin
+  mkdir -p "${HOME}/.local/bin"
+  curl -s https://ohmyposh.dev/install.sh | bash -s -- -d ${HOME}/.local/bin
 fi
 
 if [ ! -f "${HOME}/.local/share/fzf-git/fzf-git.sh" ] ; then
