@@ -9,7 +9,6 @@ Following programs must be installed:
 
 - zsh
 - fzf
-- tmux
 - zoxide
 - eza
 - bat
