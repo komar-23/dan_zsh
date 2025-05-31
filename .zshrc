@@ -1,5 +1,11 @@
 # set PATH so it includes user's private bin if it exists
-# set PATH so it includes user's private bin if it exists
+# 
+# VIMMODESW defines whether or not VIM-MODE plugins and dedicated prompt will be activated
+# VIMMODESW='norm' normal mode
+# VIMMODESW='vim' vim mode
+
+VIMMODESW='norm'
+
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
@@ -20,17 +26,25 @@ ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 source "${ZINIT_HOME}/zinit.zsh"
 
 #Show vi mode in prompt
-source "${HOME}/.config/omp/ompvimode"
+if [ "$VIMMODESW" = "vim" ] ; then
 
-#Add in zsh plugins
-#Vi-mode
-zinit ice depth=1; zinit light jeffreytse/zsh-vi-mode
+  source "${HOME}/.config/omp/ompvimode"
+
+  #Add in zsh plugins
+  #Vi-mode
+  zinit ice depth=1; zinit light jeffreytse/zsh-vi-mode
+fi
 
 #Completions
 zinit light zsh-users/zsh-completions
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors '${(s.:.)LS_COLORS}'
 zstyle ':completion:*' menu no
+
+if [ "$VIMMODESW" != "vim" ] ; then
+  bindkey -v
+fi
+
 #Keybindings
 bindkey '^l' autosuggest-accept
 bindkey '^k' history-search-backward
@@ -81,8 +95,11 @@ _fzf_compgen_dir() {
   fdfind --type d --hidden --follow --exclude ".git" . "$1"
 }
 
-# Add fzf-git window for manage GIT (don't work because of CTRL-G conflict with vim-mode plugin)
-#source "${HOME}/fzf-git.sh/fzf-git.sh"
+
+if [ "$VIMMODESW" != "vim" ] ; then
+  # Add fzf-git window for manage GIT (don't work because of CTRL-G conflict with vim-mode plugin)
+  source "${HOME}/fzf-git.sh/fzf-git.sh"
+fi
 
 export BAT_THEME=gruvbox-dark
 
@@ -103,9 +120,7 @@ zinit light zsh-users/zsh-autosuggestions
 
 #zinit cdreplay -q
 
-#bindkey -v
-
 #FZF integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
-eval "$(oh-my-posh init zsh --config ~/.config/omp/dan_vim.omp.json)"
+eval "$(oh-my-posh init zsh --config ~/.config/omp/dan_${VIMMODESW}.omp.json)"

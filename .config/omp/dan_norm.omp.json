@@ -119,20 +119,6 @@
       "newline": true,
       "segments": [
         {
-          "template": "{{ if .Env.POSH_VI_MODE }}{{ .Env.POSH_VI_MODE }}{{ end }}",	
-          "background": "transparent",
-          "foreground": "#ffffff",
-          "style": "plain",
-	  "foreground_templates": [
-            "{{if contains \"N\" .Env.POSH_VI_MODE}}blue{{end}}",
-            "{{if contains \"I\" .Env.POSH_VI_MODE}}magenta{{end}}",
-            "{{if contains \"V\" .Env.POSH_VI_MODE}}cyan{{end}}",
-            "{{if contains \"V-L\" .Env.POSH_VI_MODE}}cyan{{end}}",
-            "{{if contains \"R\" .Env.POSH_VI_MODE}}yellow{{end}}"
-	  ],
-          "type": "text"
-        },
-        {
           "foreground": "#ffffff",
           "foreground_templates": [
             "{{ if gt .Code 0 }}#ff0000{{ end }}"
