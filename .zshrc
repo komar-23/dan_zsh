@@ -68,9 +68,9 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'eza -1 --color=always $real
 export FZF_DEFAULT_COMMAND='fdfind --type f --strip-cwd-prefix --hidden --follow --exclude .git'
 export FZF_CTRL_T_COMMAND='fdfind --type f --strip-cwd-prefix --hidden --follow --exclude .git'
 export FZF_ALT_C_COMMAND='fdfind --type d --strip-cwd-prefix --hidden --follow --exclude .git'
-export FZF_CTRL_T_OPTS='--preview "bat -p --color=always --line-range :500 {}"'
+export FZF_CTRL_T_OPTS='--preview "batcat -p --color=always --line-range :500 {}"'
 export FZF_ALT_C_OPTS='--preview "eza -T --color=always --icons=always --level=2 {} | head -200"'
-#export FZF_COMPLETION_PATH_OPTS='--preview "bat -p --color=always {}"'
+#export FZF_COMPLETION_PATH_OPTS='--preview "batcat -p --color=always {}"'
 #export FZF_COMPLETION_DIR_OPTS='--preview "eza -T --color=always --icons=always --level=2 {}"'
 _fzf_comprun() {
   local command=$1
@@ -78,7 +78,7 @@ _fzf_comprun() {
 
   case "$command" in
     cd)           fzf --preview 'eza -T --color=always --icons=always --level=2 {} | head -200' "$@" ;;
-    *)            fzf --preview 'bat -p --color=always --line-range :500 {}' "$@" ;;
+    *)            fzf --preview 'batcat -p --color=always --line-range :500 {}' "$@" ;;
   esac
 }
 _fzf_compgen_path() {
