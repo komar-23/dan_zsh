@@ -45,11 +45,6 @@ if [ "$VIMMODESW" != "vim" ] ; then
   bindkey -v
 fi
 
-#Keybindings
-bindkey '^l' autosuggest-accept
-bindkey '^k' history-search-backward
-bindkey '^j' history-search-forward
-
 HISTSIZE=5000
 HISTFILE=~/.zsh_history
 SAVEHIST=$HISTSIZE
@@ -108,6 +103,11 @@ zinit light zsh-users/zsh-syntax-highlighting
 
 #Autosuggestions
 zinit light zsh-users/zsh-autosuggestions
+
+#Keybindings
+bindkey '^l' autosuggest-accept
+bindkey '^k' history-search-backward
+bindkey '^j' history-search-forward
 
 #Add in snippets
 #zinit snippet OMZP::git
