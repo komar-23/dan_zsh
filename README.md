@@ -13,7 +13,14 @@ Following programs must be installed:
 - eza
 - bat
 - fd (fd-find)
+- git
+
+Optionally (not required)
+- ripgrep
+- tldr
 
 # Installation
 
-To be described.
+1. Run *installZsh.sh* script.
+2. Choose vi mode (simple/standard vi motion support or advanced i.e. usage of dedicated plugin)
+3. Enjoy :)

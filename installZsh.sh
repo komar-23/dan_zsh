@@ -1,20 +1,30 @@
 #!/bin/bash
 #Script prepares my custom ZSH distribution
+echo 'ZSH customization installer'
 
 OMP_CONF_DIR='.config/omp'
+VI_MO=1000
 
+while [[ VI_MO -ne 0 && VI_MO -ne 1 && VI_MO -ne 2 ]]  ; do
+  echo 'Please choose VI motion support in ZSH :'
+  echo '0. Quit'
+  echo '1. Simple'
+  echo '2. Advanced (with zsh-vi-mode plugin and visualisation)'
+  echo 'Important! In advanced mode fzf-git plugin is not spported.'
+  read -p "Enter your choice [0-2]: " VI_MO
+done
+
+if [ $VI_MO -eq 0 ] ; then
+  echo 'Bye!'
+  exit 0;
+fi
+
+echo 'Start installation process ...'
 if [ ! -d "${HOME}/${OMP_CONF_DIR}" ] ; then
   mkdir -p "${HOME}/${OMP_CONF_DIR}"
 else
   echo "${HOME}/${OMP_CONF_DIR} exist."
 fi
-
-# if [ ! -d "${HOME}/${VIM_PACK_DIR}/vendor/start/cleverf" ] ; then
-#   mkdir "${HOME}/${VIM_PACK_DIR}/vendor/start/cleverf"
-#   git clone https://github.com/rhysd/clever-f.vim.git "${HOME}/${VIM_PACK_DIR}/vendor/start/cleverf"
-# else
-#   echo "${HOME}/${VIM_PACK_DIR}/vendor/start/cleverf exist."
-# fi
 
 if [ ! -f "${HOME}/${OMP_CONF_DIR}/dan_vim.omp.json" ] ; then
   cp ./.config/omp/dan_vim.omp.json ${HOME}/${OMP_CONF_DIR}/dan_vim.omp.json
@@ -40,13 +50,28 @@ else
   cp ./.config/omp/ompvimode ${HOME}/${OMP_CONF_DIR}/ompvimode
 fi
 
-if [ ! -f "${HOME}/.zshrc" ] ; then
-  cp ./.zshrc ${HOME}/.zshrc
-else
-  echo '.zshrc file exist, backup has been created as a .zshrc.bkp file'
-  cp ${HOME}/.zshrc ${HOME}/.zshrc.bkp
-  cp ./.zshrc ${HOME}/.zshrc
-fi
+case $VI_MO in
+  1)
+    if [ ! -f "${HOME}/.zshrc" ] ; then
+      cp ./.zshrc_norm ${HOME}/.zshrc
+    else
+      echo '.zshrc file exist, backup has been created as a .zshrc.bkp file'
+      cp ${HOME}/.zshrc ${HOME}/.zshrc.bkp
+      cp ./.zshrc_norm ${HOME}/.zshrc
+    fi
+    ;;
+  2)
+    if [ ! -f "${HOME}/.zshrc" ] ; then
+      cp ./.zshrc_vim ${HOME}/.zshrc
+    else
+      echo '.zshrc file exist, backup has been created as a .zshrc.bkp file'
+      cp ${HOME}/.zshrc ${HOME}/.zshrc.bkp
+      cp ./.zshrc_vim ${HOME}/.zshrc
+    fi
+    ;;
+  *) echo 'Error - something goes worng!'
+    ;;
+esac
 
 if [ ! -f "${HOME}/.zshenv" ] ; then
   cp ./.zshenv ${HOME}/.zshenv
@@ -65,3 +90,5 @@ if [ ! -f "${HOME}/.local/share/fzf-git/fzf-git.sh" ] ; then
   mkdir -p "${HOME}/.local/share/fzf-git"
   git clone https://github.com/junegunn/fzf-git.sh.git ${HOME}/.local/share/fzf-git 
 fi
+
+echo 'ZSH customization completed'
