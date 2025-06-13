@@ -16,8 +16,9 @@ Following programs must be installed:
 - git
 
 Optionally (not required)
-- ripgrep
-- tldr
+- [ripgrep](https://github.com/BurntSushi/ripgrep)
+- [tldr](https://github.com/tealdeer-rs/tealdeer)
+- [tgpt](https://github.com/aandrew-me/tgpt)
 
 # Installation
 
